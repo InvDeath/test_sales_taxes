@@ -9,7 +9,7 @@ class TestItem(unittest.TestCase):
         '''
         # general
         item1 = Item(title='music CD', price=14.99, item_type='general', imported=False)
-        self.assertEqual(item1.get_price_with_taxes(), 16.99)
+        self.assertEqual(item1.get_price_with_taxes(), 16.49)
 
         # imported, general
         item2 = Item(title='imported bottle of perfume', price=47.50, item_type='general', imported=True)
@@ -48,16 +48,16 @@ class TestItem(unittest.TestCase):
         self.assertTrue(item1._is_taxable())
 
         # books
-        item3 = Item(title='book', price=12.49, item_type='books', imported=False)
-        self.assertFalse(item1._is_taxable())
+        item2 = Item(title='book', price=12.49, item_type='books', imported=False)
+        self.assertFalse(item2._is_taxable())
 
         # food
-        item5 = Item(title='chocolate bar', price=0.85, item_type='food', imported=False)
-        self.assertFalse(item1._is_taxable())
+        item3 = Item(title='chocolate bar', price=0.85, item_type='food', imported=False)
+        self.assertFalse(item3._is_taxable())
 
         # medical
-        item7 = Item(title='packet of headache pills', price=10.00, item_type='medical', imported=False)
-        self.assertFalse(item1._is_taxable())
+        item4 = Item(title='packet of headache pills', price=10.00, item_type='medical', imported=False)
+        self.assertFalse(item4._is_taxable())
 
     def test_item_string(self):
         '''
