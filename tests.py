@@ -21,7 +21,7 @@ class TestItem(unittest.TestCase):
 
         # imported, books
         item4 = Item(title='book', price=12.49, item_type='books', imported=True)
-        self.assertEqual(item4.get_price_with_taxes(), 0.62)
+        self.assertEqual(item4.get_price_with_taxes(), 13.14)
 
         # food
         item5 = Item(title='chocolate bar', price=0.85, item_type='food', imported=False)
@@ -33,11 +33,11 @@ class TestItem(unittest.TestCase):
 
         # medical
         item7 = Item(title='packet of headache pills', price=10.00, item_type='medical', imported=False)
-        self.assertEqual(item7.get_price_with_taxes(), 10.50)
+        self.assertEqual(item7.get_price_with_taxes(), 10.00)
 
         # imported, medical
         item8 = Item(title='packet of imported headache pills', price=15.00, item_type='medical', imported=True)
-        self.assertEqual(item8.get_price_with_taxes(), 10.50)
+        self.assertEqual(item8.get_price_with_taxes(), 15.75)
 
     def test_is_taxable(self):
         '''
@@ -81,7 +81,7 @@ class TestCart(unittest.TestCase):
         '''
         item1 = Item(title='book', price=12.49, item_type='books', imported=False)
         item2 = Item(title='music CD', price=14.99, item_type='general', imported=False)
-        item3 = Item(title='chocolate bar', price=0.85, item_type='general', imported=False)
+        item3 = Item(title='chocolate bar', price=0.85, item_type='food', imported=False)
 
         cart = Cart(items=[item1, item2, item3])
         self.assertEqual(cart.get_total_price(), 29.83)
@@ -92,7 +92,7 @@ class TestCart(unittest.TestCase):
         '''
         item1 = Item(title='book', price=12.49, item_type='books', imported=False)
         item2 = Item(title='music CD', price=14.99, item_type='general', imported=False)
-        item3 = Item(title='chocolate bar', price=0.85, item_type='general', imported=False)
+        item3 = Item(title='chocolate bar', price=0.85, item_type='food', imported=False)
 
         cart = Cart(items=[item1, item2, item3])
         self.assertEqual(cart.get_total_taxes(), 1.50)
