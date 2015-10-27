@@ -9,35 +9,35 @@ class TestItem(unittest.TestCase):
         '''
         # general
         item1 = Item(title='music CD', price=14.99, item_type='general', imported=False)
-        self.assertEqual(item1.get_tax(), 1.5)
+        self.assertEqual(item1.get_price_with_taxes(), 16.99)
 
         # imported, general
         item2 = Item(title='imported bottle of perfume', price=47.50, item_type='general', imported=True)
-        self.assertEqual(item2.get_tax(), 54.65)
+        self.assertEqual(item2.get_price_with_taxes(), 54.65)
 
         # books
         item3 = Item(title='book', price=12.49, item_type='books', imported=False)
-        self.assertEqual(item3.get_tax(), 0)
+        self.assertEqual(item3.get_price_with_taxes(), 12.49)
 
         # imported, books
         item4 = Item(title='book', price=12.49, item_type='books', imported=True)
-        self.assertEqual(item4.get_tax(), 0.62)
+        self.assertEqual(item4.get_price_with_taxes(), 0.62)
 
         # food
         item5 = Item(title='chocolate bar', price=0.85, item_type='food', imported=False)
-        self.assertEqual(item5.get_tax(), 0.85)
+        self.assertEqual(item5.get_price_with_taxes(), 0.85)
 
         # imported, food
         item6 = Item(title='box of imported chocolates', price=11.25, item_type='food', imported=True)
-        self.assertEqual(item6.get_tax(), 11.85)
+        self.assertEqual(item6.get_price_with_taxes(), 11.85)
 
         # medical
         item7 = Item(title='packet of headache pills', price=10.00, item_type='medical', imported=False)
-        self.assertEqual(item7.get_tax(), 10.50)
+        self.assertEqual(item7.get_price_with_taxes(), 10.50)
 
         # imported, medical
         item8 = Item(title='packet of imported headache pills', price=15.00, item_type='medical', imported=True)
-        self.assertEqual(item8.get_tax(), 10.50)
+        self.assertEqual(item8.get_price_with_taxes(), 10.50)
 
     def test_is_taxable(self):
         '''
