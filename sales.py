@@ -44,13 +44,13 @@ class Cart(object):
         total_taxes = 0
         for item in self.items:
             total_taxes += item.get_tax()
-        return total_taxes
+        return round(total_taxes, 2)
 
     def get_total_price(self):
         total_price = 0
         for item in self.items:
             total_price += item.get_price_with_taxes()
-        return total_price
+        return round(total_price, 2)
 
     def __str__(self):
         pass

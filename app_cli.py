@@ -1,6 +1,6 @@
-from sales import Item, Cart
-import settings
 import sys
+import settings
+from sales import Item, Cart
 
 
 class ParseError(Exception): pass
@@ -15,7 +15,12 @@ def suggest_type(title):
 
 
 def render_output(cart):
-    return ''
+    result = []
+    for item in cart.items:
+        result.append('1 {}: {}'.format(item.title, item.get_price_with_taxes()))
+    result.append('Sales Taxes: {}'.format(cart.get_total_taxes()))
+    result.append('Total: {}'.format(cart.get_total_price()))
+    return '\n'.join(result)
 
 
 def create_item_from_string(raw_input):
@@ -44,6 +49,7 @@ def main():
                 cart.add_item(item)
         except ParseError:
             print('Wrong line format')
+    print(render_output(cart))
 
 
 if __name__ == '__main__':
