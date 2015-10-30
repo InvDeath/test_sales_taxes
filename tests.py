@@ -1,5 +1,6 @@
 import unittest
 from sales import Item, Cart
+from app_cli import create_item_from_string, suggest_type
 
 
 class TestItem(unittest.TestCase):
@@ -99,11 +100,30 @@ class TestCart(unittest.TestCase):
 
 
 class TestCli(unittest.TestCase):
-    def test_parse_input(self):
-        assert False
+    def test_create_item_from_string(self):
+        '''
+        From stdin input create Item
+        '''
+        input1 = '1 book at 12.49'
+        item1 = create_item_from_string(input1)[0]
+        self.assertEqual(item1.title, 'book')
+        self.assertEqual(item1.price, 12.49)
+        self.assertEqual(item1.item_type, 'books')
+        self.assertFalse(item1.imported)
 
-    def test_output(self):
-        assert False
+        input2 = '1 imported box of chocolates at 10.50'
+        item2 = create_item_from_string(input2)[0]
+        self.assertTrue(item2.imported)
+
+    def test_suggest_type(self):
+        '''
+        Test type suggestions
+        '''
+        type1 = suggest_type('book')
+        self.assertEqual(type1, 'books')
+
+        type2 = suggest_type('undef thing')
+        self.assertEqual(type2, 'general')
 
 
 if __name__ == '__main__':
