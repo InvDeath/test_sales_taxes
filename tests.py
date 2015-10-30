@@ -1,6 +1,6 @@
 import unittest
 from sales import Item, Cart
-from app_cli import create_item_from_string, suggest_type
+from app_cli import create_item_from_string, suggest_type, ParseError
 
 
 class TestItem(unittest.TestCase):
@@ -114,6 +114,10 @@ class TestCli(unittest.TestCase):
         input2 = '1 imported box of chocolates at 10.50'
         item2 = create_item_from_string(input2)[0]
         self.assertTrue(item2.imported)
+
+        input2 = '1_imported box of chocolates at10.50'
+        with self.assertRaises(ParseError):
+            create_item_from_string(input2)
 
     def test_suggest_type(self):
         '''
