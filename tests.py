@@ -98,5 +98,13 @@ class TestCart(unittest.TestCase):
         self.assertEqual(cart.get_total_taxes(), 1.50)
 
 
+class TestCli(unittest.TestCase):
+    def test_parse_input(self):
+        assert False
+
+    def test_output(self):
+        assert False
+
+
 if __name__ == '__main__':
     unittest.main()
