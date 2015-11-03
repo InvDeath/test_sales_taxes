@@ -12,6 +12,6 @@ Python 3
 ## Ho to use
 
 Run CLI ./app_cli.py  
-Input items in format "[number] [imported] [title] at [price float]"
-Example: 1 imported box of chocolates at 10.00
-Input enpty string for finish.
+Input items in format "[number] [imported] [title] at [price float]"  
+Example: 1 imported box of chocolates at 10.00  
+Input enpty string for finish.  
