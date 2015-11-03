@@ -52,5 +52,8 @@ class Cart(object):
             total_price += item.get_price_with_taxes()
         return round(total_price, 2)
 
+    def count(self):
+        return len(self.items)
+
     def __str__(self):
         pass
