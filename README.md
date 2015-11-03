@@ -6,10 +6,10 @@ products that are exempt. Import duty is an additional sales tax applicable on a
 goods at a rate of 5%, with no exemptions.
 
 
-## Requirments:
+## Requirements:
 Python 3
 
-## Ho to use
+## How to use:
 
 Run CLI ./app_cli.py  
 Input items in format "[number] [imported] [title] at [price float]"  
