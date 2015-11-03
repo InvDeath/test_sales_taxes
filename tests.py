@@ -98,6 +98,15 @@ class TestCart(unittest.TestCase):
         cart = Cart(items=[item1, item2, item3])
         self.assertEqual(cart.get_total_taxes(), 1.50)
 
+    def test_items_count(self):
+        item1 = Item(title='book', price=12.49, item_type='books', imported=False)
+        item2 = Item(title='music CD', price=14.99, item_type='general', imported=False)
+        item3 = Item(title='chocolate bar', price=0.85, item_type='food', imported=False)
+
+        cart = Cart(items=[item1, item2, item3])
+
+        self.assertEqual(cart.count(), 3)
+
 
 class TestCli(unittest.TestCase):
     def test_create_item_from_string(self):
