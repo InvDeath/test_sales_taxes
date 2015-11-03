@@ -17,9 +17,9 @@ def suggest_type(title):
 def render_output(cart):
     result = []
     for item in cart.items:
-        result.append('1 {}: {}'.format(item.title, item.get_price_with_taxes()))
-    result.append('Sales Taxes: {}'.format(cart.get_total_taxes()))
-    result.append('Total: {}'.format(cart.get_total_price()))
+        result.append('1 {}: {:.2f}'.format(item.title, item.get_price_with_taxes()))
+    result.append('Sales Taxes: {:.2f}'.format(cart.get_total_taxes()))
+    result.append('Total: {:.2f}'.format(cart.get_total_price()))
     return '\n'.join(result)
 
 
@@ -49,7 +49,10 @@ def main():
                 cart.add_item(item)
         except ParseError:
             print('Wrong line format')
-    print(render_output(cart))
+    if cart.count():
+        print(render_output(cart))
+    else:
+        print('Cart is empty')
 
 
 if __name__ == '__main__':
